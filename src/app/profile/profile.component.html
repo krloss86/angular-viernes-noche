@@ -1,0 +1,70 @@
+<div class="bg-gradient-primary" style="height: 100vh;">
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-1">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="list-group p-1">
+                            <a (click)="changeRouterLink('/profile/persona-data')" routerLink="/profile/persona-data" class="list-group-item list-group-item-action" routerLinkActive="active">
+                                <i class="fas fa-user-tie fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Datos de Perfil
+                            </a>
+                            <a (click)="changeRouterLink('/profile/curso-data')" routerLink="/profile/curso-data" class="list-group-item list-group-item-action" routerLinkActive="active">
+                                <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Datos Curso
+                            </a>
+                            <!-- <a href="#" class="list-group-item list-group-item-action" routerLinkActive="active" (click)="logout()">Logout</a> -->
+                            <a class="list-group-item list-group-item-action" href="#" data-toggle="modal" data-target="#logoutModal" routerLinkActive="active">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                              </a>
+                        </div> 
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="p-5">
+                            <!--
+                            <router-outlet></router-outlet>
+                            -->
+                            <div [ngSwitch]="currentPath">
+                                <div *ngSwitchCase="'/profile/persona-data'">
+                                    <app-persona-data [user]="user"></app-persona-data>
+                                </div>
+                                <div *ngSwitchCase="'/profile/curso-data'">
+                                    <app-curso-data [curso]="user.curso"></app-curso-data>
+                                </div>
+                                <div *ngSwitchDefault>
+                                    <div class="text-center">
+                                        <h1 class="h1 text-gray-900 mb-4">
+                                            Hola {{user.username}} {{user.username}}
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Confirma Logout?</h5>
+      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">¿Está seguro de Salir?</div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+      <button class="btn btn-info" (click)="logout()" type="button" data-dismiss="modal">Salir</button>
+    </div>
+  </div>
+</div>
+</div>

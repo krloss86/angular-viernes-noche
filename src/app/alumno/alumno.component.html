@@ -1,0 +1,9 @@
+<div class="bg-sucess">
+    <div class="bg-success">Valor actual:  {{valorObservado}}</div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let alumno of listaAlumnos" 
+            (click)="eliminarAlumnoHijo(alumno)">
+            {{alumno}}
+        </li>
+    </ul>
+</div>
